@@ -83,9 +83,10 @@ $(document).ready(function () {
         (str.substr(3, 2) >= 0) &&
         (str.substr(3, 2) <= 59) &&
         (str.substr(0, 2) < 24 || (str.substr(0, 2) == 24 && str.substr(3, 2) == 0))
-      )
-        {validSched = true;
-        console.log("checkMilTime true");}
+      ) {
+        validSched = true;
+        console.log("checkMilTime true");
+      }
       else {
         validSched = false;
         console.log(str.substr(0, 2));
@@ -106,7 +107,7 @@ $(document).ready(function () {
 
     console.log("no validation exit");
 
-    
+
     database.ref().push({
       trainName: trainName,
       destination: destination,
@@ -117,13 +118,28 @@ $(document).ready(function () {
     console.log("Check database for data!");
   });
 
+
+
+
+  /*
+      row.append(addData(name)).append(addData(role)).append(addData(start)).append(addData(monthsWorked)).append(addData(rate)).append(addData(totalBilled));
+    
+      function addData(data) {
+        var td = $("<td>");
+        td.text(data);
+        return td;
+      }
+    
+      $("#scheduleTrains").append(row);
+    }
+  */
   database.ref().on("child_added", function (snapshot) {
     var trainName = snapshot.val().trainName;
     var destination = snapshot.val().destination;
     var initlDeparture = snapshot.val().initlDeparture;
     var frequency = snapshot.val().frequency;
     var initlDeparture12 = (moment(initlDeparture, 'HH:mm').format('hh:mm a'));
-    var nextToArrive = (moment(initlDeparture12,'hh:mm a').add(frequency, 'minutes').format('hh:mm a'));
+    var nextToArrive = (moment(initlDeparture12, 'hh:mm a').add(frequency, 'minutes').format('hh:mm a'));
 
     console.log("child added-train: " + trainName);
     console.log("child added-dest: " + destination);
@@ -132,6 +148,26 @@ $(document).ready(function () {
     console.log("child added-freq: " + frequency);
     console.log("child-added-next:" + nextToArrive);
 
+    var entryArray = [];
+
+    entryArray.push(trainName);
+    entryArray.push(destination);
+    entryArray.push(initlDeparture);
+    entryArray.push(frequency);
+    entryArray.push(nextToArrive);
+
+    addEntry(entryArray);
+
+    function addEntry(entryArray) {
+      var entry = $("<tr>");
+      entryArray.forEach(myfunction);
+      $("#scheduleEntries").append(entry);
+
+      function myfunction(item) {
+        console.log("addEntry: " + item);
+        var data = $("<td></td>").text(item);
+        entry.append(data);
+      };
+    };
   });
 });
-
