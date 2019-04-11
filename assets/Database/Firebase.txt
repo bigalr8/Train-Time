@@ -1,0 +1,14 @@
+
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBTviDz97Y1AzZ-oiGeOrC-QRVi4cD_5kY",
+    authDomain: "train-time-9192a.firebaseapp.com",
+    databaseURL: "https://train-time-9192a.firebaseio.com",
+    projectId: "train-time-9192a",
+    storageBucket: "train-time-9192a.appspot.com",
+    messagingSenderId: "881882052314"
+  };
+  firebase.initializeApp(config);
+</script>

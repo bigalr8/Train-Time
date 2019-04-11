@@ -1,0 +1,33 @@
+
+.jumbotron {
+    background-image: url("../images/Train Time Image 2.jfif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    Color: white;
+    clear:right;
+}
+
+
+/* set width and positioning to base container */
+#container {
+    max-width: 960px;  
+    margin:auto;
+    /*    display: block; */
+} 
+
+#sidebar {
+ 
+    width: 600px;
+    height: 80px;
+    background-color: rgba(0,0,0,.03);
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(90deg);
+
+    float: right;
+    text-align: center;
+    line-height: 80px;
+    font-weight: bolder;
+    margin:32px;
+      
+}
