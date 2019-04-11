@@ -108,10 +108,10 @@ $(document).ready(function () {
 
     
     database.ref().push({
-      name: trainName,
-      role: destination,
-      start: initlDeparture,
-      rate: frequency,
+      trainName: trainName,
+      destination: destination,
+      initlDeparture: initlDeparture,
+      frequency: frequency,
       dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
     console.log("Check database for data!");
