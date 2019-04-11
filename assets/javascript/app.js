@@ -116,7 +116,22 @@ $(document).ready(function () {
     });
     console.log("Check database for data!");
   });
+
+  database.ref().on("child_added", function (snapshot) {
+    var trainName = snapshot.val().trainName;
+    var destination = snapshot.val().destination;
+    var initlDeparture = snapshot.val().initlDeparture;
+    var frequency = snapshot.val().frequency;
+    var initlDeparture12 = (moment(initlDeparture, 'HH:mm').format('hh:mm a'));
+    var nextToArrive = (moment(initlDeparture12,'hh:mm a').add(frequency, 'minutes').format('hh:mm a'));
+
+    console.log("child added-train: " + trainName);
+    console.log("child added-dest: " + destination);
+    console.log("child added-depart: " + initlDeparture);
+    console.log("child added-depart 12: " + initlDeparture12);
+    console.log("child added-freq: " + frequency);
+    console.log("child-added-next:" + nextToArrive);
+
+  });
 });
-
-
 
